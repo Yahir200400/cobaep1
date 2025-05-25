@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COBAEP - Página Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600&display=swap');
+        
+        :root {
+            --cobaep-primary: #9D2449;
+            --cobaep-secondary: #7A1C3A;
+            --cobaep-accent: #D9A441;
+            --cobaep-light: #FFFFFF;
+            --cobaep-dark: #2A2A2A;
+            --neon-blue: #00F3FF;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #71060b;
+        }
+        
+        /* Banner futurista */
+        .futuristic-banner {
+            width: 90%;
+            height: 150px;
+            background: linear-gradient(90deg, var(--cobaep-primary), var(--cobaep-secondary));
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            color: var(--cobaep-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .left-section {
+            display: flex;
+            align-items: center;
+            width: 70%;
+        }
+        
+        .mascot {
+            width: 130px;
+            height: 130px;
+            margin-right: 30px;
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+            animation: fadeInOut 4s infinite ease-in-out;
+            object-fit: contain;
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .banner-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInOut 5s infinite ease-in-out;
+            animation-delay: 0.5s;
+        }
+        
+        .banner-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            max-width: 90%;
+            line-height: 1.4;
+            font-weight: 400;
+            opacity: 0.9;
+            animation: fadeInOut 6s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+        
+        .logo-bg {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 140px;
+            height: 140px;
+            background: url('log.jpg') center/contain no-repeat;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3)) opacity(0.7);
+            z-index: 1;
+            animation: fadeInOut 7s infinite ease-in-out;
+        }
+        
+        /* Elementos futuristas */
+        .tech-circle {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            right: -30px;
+            top: -30px;
+            animation: rotate 30s linear infinite;
+            z-index: 2;
+        }
+        
+        .tech-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            right: 60px;
+            top: 30px;
+            border-color: var(--neon-blue);
+            animation-direction: reverse;
+            animation-duration: 20s;
+        }
+        
+        .hexagon-grid {
+            position: absolute;
+            right: 300px;
+            bottom: 15px;
+            opacity: 0.1;
+            z-index: 2;
+        }
+        
+        .hexagon {
+            position: absolute;
+            width: 35px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: var(--cobaep-light);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 6s linear infinite;
+        }
+        
+        /* Animaciones */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100%); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        /* Resto del diseño original */
+        .container {
+            display: flex;
+            height: calc(100vh - 140px); /* Ajuste para el banner */
+        }
+        
+        .frame1 {
+            flex: 1;
+            background-color: #E6E6E6;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .frame1 img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .frame2 {
+            flex: 3;
+            background-color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333534;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: rgb(255, 255, 255);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #9D2449;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown .dropdown-content .dropdown-content {
+            left: 100%;
+            top: 0;
+        }
+        
+        .menu {
+            background-color: #9D2449;
+            color: rgb(14, 13, 13);
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .menu a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin-right: 15px;
+            padding: 5px;
+        }
+        
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            background-color: #9D2449;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        /* Estilos para el banner vertical COBAEP */
+        .vertical-banner {
+            width: 300px;
+            height: 500px;
+            background: linear-gradient(135deg, #003366 0%, #0066CC 50%, #9E0B0F 100%);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+            color: white;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .fire-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(158, 11, 15, 0.8), transparent);
+            z-index: 0;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .shape1 {
+            top: 10%;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape2 {
+            bottom: 25%;
+            left: -40px;
+            width: 100px;
+            height: 100px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            background: #9E0B0F;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        .shape3 {
+            top: 30%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            background: white;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            animation: float 6s ease-in-out infinite 0.5s;
+        }
+
+        .shape4 {
+            bottom: 15%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: rgba(255, 215, 0, 0.4);
+            animation: float 9s ease-in-out infinite 1.5s;
+        }
+
+        .image-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #003366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed rgba(255, 215, 0, 0.5);
+            border-radius: 25px;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        .image-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .banner-logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 2;
+            color: #FFD700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .banner-logo::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: #9E0B0F;
+            border-radius: 3px;
+        }
+
+        .banner-slogan {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            z-index: 2;
+            padding: 0 25px;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .social-container {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .facebook:hover { color: #1877F2; background: white; }
+        .instagram:hover { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+        .whatsapp:hover { color: white; background: #25D366; }
+
+        .banner-footer-text {
+            font-size: 11px;
+            opacity: 0.7;
+            z-index: 2;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .upload-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .upload-btn {
+            background: #003366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .upload-btn:hover {
+            background: #0066CC;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        /* Estilos para el contenido dinámico */
+        .dynamic-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .content-active {
+            display: block;
+        }
+
+        /* Estilos para el contenido de inicio */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 15px;
+        }
+        
+        .section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-content {
+            padding: 20px;
+        }
+        
+        .section h2 {
+            color: #9D2449;
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #9D2449;
+            transition: width 0.5s ease;
+        }
+        
+        .section:hover h2::after {
+            width: 100%;
+        }
+        
+        .section p, .section ul {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+            transition-delay: 0.3s;
+        }
+        
+        .section.visible p, 
+        .section.visible ul {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .section ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: all 0.4s ease;
+        }
+        
+        .section ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #9D2449;
+            font-size: 1.2em;
+        }
+        
+        .section.visible ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .section.visible ul li:nth-child(1) { transition-delay: 0.4s; }
+        .section.visible ul li:nth-child(2) { transition-delay: 0.5s; }
+        .section.visible ul li:nth-child(3) { transition-delay: 0.6s; }
+        .section.visible ul li:nth-child(4) { transition-delay: 0.7s; }
+        .section.visible ul li:nth-child(5) { transition-delay: 0.8s; }
+        
+        .section ul {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .section-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .section:hover .section-img {
+            transform: scale(1.05);
+        }
+        
+        /* Estilos para la página de Danza Folklórica */
+        .danza-header {
+            background-image: url("que.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .danza-header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .danza-header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .danza-header::before {
+            content: "";
+            background-image: url("titulo_fondo.jpg");
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            z-index: 1;
+        }
+        
+        .danza-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .danza-section {
+            margin-bottom: 60px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .danza-section h2 {
+            color: #9D2449;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .danza-section p {
+            font-size: 1.1rem;
+            color: #333333;
+            text-align: justify;
+        }
+        
+        .danza-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .trajes-tipicos img {
+            width: 50%;
+            height: auto;
+        }
+        
+        /* Estilos para la página de Rondalla */
+        .rondalla-header {
+            background-image: url("ronf.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .rondalla-header::before {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .rondalla-header h1, .rondalla-header p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rondalla-header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .rondalla-header p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .rondalla-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .rondalla-container h2 {
+            color: #8B4513;
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        .rondalla-container p {
+            line-height: 1.6;
+        }
+
+        .rondalla-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        /* Estilos para Artes Plásticas */
+        .artes-header {
+            background-image: url("mi.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .artes-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .artes-header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .artes-header p {
+            margin: 10px 0 0;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .artes-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .artes-section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .artes-section h2 {
+            color: #8a5a44;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .artes-section p {
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .artes-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .artes-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .artes-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .artes-contacto {
+            background-color: #6b442c;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .artes-contacto h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .artes-contacto p {
+            font-size: 1.1rem;
+        }
+
+        .artes-contacto a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .artes-contacto a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Estilos para Banda de Guerra */
+        .banda-header {
+            background-image: url("js.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .banda-header::before {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .banda-header h1, .banda-header p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banda-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .banda-header p {
+            margin: 10px 0 0;
+            font-size: 1.5rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .banda-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .banda-section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .banda-section h2 {
+            color: #1c2a3a;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .banda-section p {
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .banda-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .banda-gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banda-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .banda-contacto {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .banda-contacto h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .banda-contacto p {
+            font-size: 1.1rem;
+        }
+
+        .banda-contacto a {
+            color: #f39c12;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .banda-contacto a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (min-width: 768px) {
+            .section {
+                flex-direction: row;
+                min-height: 250px;
+            }
+            
+            .section-content {
+                flex: 2;
+                padding: 25px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .section-img-container {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+            
+            .section-img {
+                height: 100%;
+                max-height: 200px;
+                width: auto;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .section-img {
+                height: 180px;
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .futuristic-banner {
+                padding: 0 40px;
+                height: 130px;
+            }
+            
+            .banner-title {
+                font-size: 1.6rem;
+            }
+            
+            .mascot {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-bg {
+                width: 130px;
+                height: 130px;
+            }
+
+            .vertical-banner {
+                width: 180px;
+                height: 450px;
+            }
+
+            .menu a {
+                margin-right: 10px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .futuristic-banner {
+                height: 120px;
+                padding: 0 30px;
+            }
+            
+            .banner-title {
+                font-size: 1.4rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .mascot {
+                width: 110px;
+                height: 110px;
+                margin-right: 20px;
+            }
+            
+            .logo-bg {
+                width: 120px;
+                height: 120px;
+            }
+
+            .vertical-banner {
+                width: 160px;
+                height: 400px;
+                padding: 20px 0;
+            }
+
+            .image-container {
+                width: 130px;
+                height: 130px;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .futuristic-banner {
+                flex-direction: column;
+                height: auto;
+                padding: 25px;
+                text-align: center;
+            }
+            
+            .banner-content {
+                flex-direction: column;
+            }
+            
+            .left-section, .right-section {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .left-section {
+                margin-bottom: 15px;
+                flex-direction: column;
+            }
+            
+            .text-content {
+                text-align: center;
+                margin-top: 10px;
+            }
+            
+            .banner-subtitle {
+                max-width: 100%;
+            }
+            
+            .mascot {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .tech-circle {
+                display: none;
+            }
+            
+            .logo-bg {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 15px auto 0;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .vertical-banner {
+                width: 100%;
+                max-width: 250px;
+                height: 500px;
+                margin: 0 auto;
+            }
+            
+            .danza-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .danza-section h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery img {
+                width: 100%;
+                height: auto;
+            }
+            
+            .trajes-tipicos img {
+                width: 100%;
+            }
+
+            .artes-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .artes-section h2 {
+                font-size: 2rem;
+            }
+
+            .banda-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .banda-section h2 {
+                font-size: 2rem;
+            }
+
+            .banda-gallery img {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .banner-title {
+                font-size: 1.2rem;
+            }
+            
+            .mascot {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .logo-bg {
+                width: 90px;
+                height: 90px;
+            }
+
+            .vertical-banner {
+                height: 450px;
+            }
+
+            .image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .menu a {
+                font-size: 12px;
+                padding: 3px;
+            }
+            
+            .danza-header h1 {
+                font-size: 2rem;
+            }
+            
+            .danza-header p {
+                font-size: 1rem;
+            }
+            
+            .danza-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .danza-section p {
+                font-size: 1rem;
+            }
+
+            .artes-header h1 {
+                font-size: 2rem;
+            }
+
+            .artes-header p {
+                font-size: 1rem;
+            }
+
+            .artes-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .banda-header h1 {
+                font-size: 2rem;
+            }
+
+            .banda-header p {
+                font-size: 1rem;
+            }
+
+            .banda-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner futurista -->
+    <div class="futuristic-banner">
+        <!-- Elementos decorativos futuristas -->
+        <div class="tech-circle"></div>
+        <div class="tech-circle"></div>
+        
+        <div class="hexagon-grid">
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+        </div>
+        
+        <div class="particles"></div>
+        
+        <!-- Logo como fondo -->
+        <div class="logo-bg"></div>
+        
+        <!-- Contenido principal -->
+        <div class="banner-content">
+            <div class="left-section">
+                <img src="xx.jpg" alt="Mascota COBAEP" class="mascot">
+                <div class="text-content">
+                    <h1 class="banner-title">COLEGIO DE BACHILLERES DEL ESTADO DE PUEBLA</h1>
+                    <p class="banner-subtitle">Plantel 35 - Chilchotla</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="frame1">
+            <!-- Banner vertical COBAEP -->
+            <div class="upload-container">
+                <h3 style="font-size: 14px; margin-bottom: 10px;">Selecciona una imagen</h3>
+                <label for="file-input" class="upload-btn">
+                    <i class="fas fa-upload"></i> Subir imagen
+                </label>
+                <input type="file" id="file-input" accept="image/*">
+            </div>
+
+            <div class="vertical-banner">
+                <!-- Efecto de fuego -->
+                <div class="fire-effect"></div>
+                
+                <!-- Figuras geométricas -->
+                <div class="geometric-shape shape1"></div>
+                <div class="geometric-shape shape2"></div>
+                <div class="geometric-shape shape3"></div>
+                <div class="geometric-shape shape4"></div>
+                
+                <!-- Contenido principal -->
+                <div style="z-index: 2; display: flex; flex-direction: column; align-items: center;">
+                    <div class="banner-logo">COBAEP</div>
+                    <div class="banner-slogan">Transformando Educación</div>
+                    
+                    <!-- Contenedor de imagen -->
+                    <div class="image-container">
+                        <div class="image-placeholder">Imagen del plantel</div>
+                        <img id="banner-image" alt="Imagen COBAEP">
+                    </div>
+                </div>
+                
+                <!-- Redes sociales en la parte inferior -->
+                <div class="social-container">
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="banner-footer-text">SÍGUENOS</div>
+                </div>
+            </div>
+
+            <!-- Imagen adicional (pet.jpg) -->
+            <img src=".jpg" alt="Descripción de la imagen" style="max-width: 100%; margin-top: 20px;">
+        </div>
+        <div class="frame2">
+            <div class="menu">
+                <a href="#" class="menu-link" data-content="inicio">Inicio</a>
+                <div class="dropdown">
+                    <a href="#">Para Escolares (UAC) </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="menu-link" data-content="danza">Danza Folklórica</a>
+                        <a href="#" class="menu-link" data-content="rondalla">Rondalla</a>
+                        <a href="#" class="menu-link" data-content="artes">Artes Plásticas</a>
+                        <a href="#" class="menu-link" data-content="bandag">Banda de Guerra</a>
+                        <a href="#" class="menu-link" data-content="bandamusical">Banda Musical</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Materias</a>
+                    <div class="dropdown-content">
+                        <a href="#" class="menu-link" data-content="materias">UAC</a>
+                        <div class="dropdown">
+                            <a href="#">Capacitaciones</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="menu-link" data-content="informaticac">Informática</a>
+                                <a href="#" class="menu-link" data-content="alimentos">Alimentos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="menu-link" data-content="cobs">Docentes</a>
+                <a href="#" class="menu-link" data-content="becas">Becas</a>
+                <a href="#" class="menu-link" data-content="admision">Proceso de Admisión</a>
+                <a href="#" class="menu-link" data-content="ubicacion">Conócenos</a>
+                <a href="#" class="menu-link" data-content="reglamento">Reglamento Escolar</a>
+                <a href="#" class="menu-link" data-content="horarios">Horarios Escolares</a>
+                <a href="#" class="menu-link" data-content="contacto">Contáctanos</a>
+            </div>
+            
+            <!-- Contenido dinámico -->
+            <div id="inicio" class="dynamic-content content-active">
+                <header>
+                    <h1>Colegio de Bachilleres del Estado de Puebla</h1>
+                </header>
+
+                <div class="main-container">
+                    <!-- Sección Quiénes Somos -->
+                    <section class="section">
+                        <div class="section-img-container">
+                            <img src="cobe.jpeg" alt="Imagen de Quiénes Somos" class="section-img">
+                        </div>
+                        <div class="section-content">
+                            <h2>Quiénes Somos</h2>
+                            <p>El Colegio de Bachilleres del Estado de Puebla es una institución educativa comprometida con la formación integral de los jóvenes, brindando una educación de calidad que les permita desarrollarse académica, social y personalmente.</p>
+                        </div>
+                    </section>
+
+                    <!-- Sección Misión -->
+                    <section class="section">
+                        <div class="section-img-container">
+                            <img src="dddd.jpeg" alt="Imagen de Misión" class="section-img">
+                        </div>
+                        <div class="section-content">
+                            <h2>Misión</h2>
+                            <p>Nuestra misión es ofrecer un servicio educativo de calidad, formando bachilleres competentes, críticos y comprometidos con su entorno, capaces de enfrentar los retos de la sociedad actual y contribuir al desarrollo de su comunidad.</p>
+                        </div>
+                    </section>
+
+                    <!-- Sección Visión -->
+                    <section class="section">
+                        <div class="section-img-container">
+                            <img src="ppp.jpeg" alt="Imagen de Visión" class="section-img">
+                        </div>
+                        <div class="section-content">
+                            <h2>Visión</h2>
+                            <p>Ser una institución líder en la educación media superior, reconocida por su excelencia académica, innovación educativa y compromiso con el desarrollo integral de los estudiantes.</p>
+                        </div>
+                    </section>
+
+                    <!-- Sección Valores -->
+                    <section class="section">
+                        <div class="section-img-container">
+                            <img src="zzzz.jpeg" alt="Imagen de Valores" class="section-img">
+                        </div>
+                        <div class="section-content">
+                            <h2>Valores</h2>
+                            <ul>
+                                <li><strong>Respeto:</strong> Fomentamos el respeto hacia las personas, las ideas y el medio ambiente.</li>
+                                <li><strong>Responsabilidad:</strong> Promovemos la responsabilidad en el cumplimiento de las tareas y compromisos.</li>
+                                <li><strong>Honestidad:</strong> Valoramos la honestidad como base de la confianza y la integridad.</li>
+                                <li><strong>Solidaridad:</strong> Incentivamos la solidaridad y el trabajo en equipo.</li>
+                                <li><strong>Excelencia:</strong> Buscamos la excelencia en todo lo que hacemos, tanto en lo académico como en lo personal.</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Contenido para Danza Folklórica -->
+            <div id="danza" class="dynamic-content">
+                <!-- Header -->
+                <div class="danza-header">
+                    <h1>Danza Folklórica Mexicana</h1>
+                    <p>Explora la riqueza cultural de México a través de su danza tradicional.</p>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="danza-container">
+                    <!-- Sección de Historia -->
+                    <div id="historia" class="danza-section">
+                        <h2>Danza Folklórica</h2>
+                        <p>
+                            La danza folklórica mexicana es una expresión cultural que combina música, vestuario y movimientos únicos. Cada región de México tiene sus propios bailes tradicionales, como el Jarabe Tapatío, la Danza de los Viejitos y el Son Jarocho. Estas danzas son una ventana a la historia y las tradiciones de nuestro país.
+                        </p>
+                    </div>
+
+                    <!-- Sección de Trajes Típicos -->
+                    <div id="trajes" class="danza-section trajes-tipicos">
+                        <h2>Trajes Típicos</h2>
+                        <img src="pt.jpeg" alt="Trajes Típicos">
+                        <p>
+                            Los trajes típicos de la danza folklórica son una parte esencial de su belleza. Desde los coloridos vestidos de Jalisco hasta los elegantes trajes de Veracruz, cada prenda cuenta una historia y representa la identidad de su región.
+                        </p>
+                    </div>
+
+                    <!-- Sección de Galería -->
+                    <div id="galeria" class="danza-section">
+                        <h2>Galería</h2>
+                        <div class="gallery">
+                            <img src="cc.jpeg" alt="Danza Folklórica 1">
+                            <img src="ddd.jpeg" alt="Danza Folklórica 2">
+                            <img src="zp.jpeg" alt="Danza Folklórica 3">
+                            <img src="sd.jpeg" alt="Danza Folklórica 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenido para Rondalla -->
+            <div id="rondalla" class="dynamic-content">
+                <!-- Header -->
+                <div class="rondalla-header">
+                    <h1>Rondalla</h1>
+                    <p>Música Tradicional y Cultura</p>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="rondalla-container">
+                    <section id="historia">
+                        <h2>La Rondalla</h2>
+                        <p>La Rondalla es un conjunto musical tradicional que tiene sus raíces en la música popular de España y América Latina. Se caracteriza por el uso de instrumentos de cuerda pulsada, como la guitarra, el requinto, el guitarrón y la mandolina. La Rondalla ha sido una parte importante de la cultura musical en muchas regiones, especialmente en festividades y celebraciones.</p>
+                        <p>Su origen se remonta a los trovadores medievales, quienes tocaban y cantaban en plazas y calles. Con el tiempo, la Rondalla evolucionó y se adaptó a diferentes contextos culturales, manteniendo su esencia y encanto.</p>
+                    </section>
+
+                    <section id="instrumentos">
+                        <h2>Instrumentos de la Rondalla</h2>
+                        <p>Los instrumentos más comunes en una Rondalla incluyen:</p>
+                        <ul>
+                            <li><strong>Guitarra:</strong> El instrumento principal, que proporciona la base armónica.</li>
+                            <li><strong>Requinto:</strong> Una guitarra pequeña que toca melodías agudas.</li>
+                            <li><strong>Guitarrón:</strong> Un instrumento de bajo que aporta profundidad al sonido.</li>
+                            <li><strong>Mandolina:</strong> Un instrumento de cuerda que añade brillo y textura.</li>
+                        </ul>
+                    </section>
+
+                    <section id="galeria">
+                        <h2>Galería</h2>
+                        <img src="ka.jpeg" alt="Rondalla en concierto">
+                    </section>
+
+                    <section id="contacto">
+                        <h2>Contacto</h2>
+                        <p>Si deseas conocer más sobre la Rondalla o contratar un conjunto musical, no dudes en contactarnos:</p>
+                        <p>Email: <a href="mailto:info@rondalla.com">info@rondalla.com</a></p>
+                        <p>Teléfono: +123 456 7890</p>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Contenido para Artes Plásticas -->
+            <div id="artes" class="dynamic-content">
+                <!-- Encabezado con imagen de fondo -->
+                <header class="artes-header">
+                    <h1>Artes Plásticas</h1>
+                    <p>Explorando la Creatividad y la Expresión</p>
+                </header>
+
+                <!-- Contenido principal -->
+                <main class="artes-container">
+                    <!-- Sección de Inicio -->
+                    <section id="inicio" class="artes-section">
+                        <h2>Bienvenidos</h2>
+                        <p>
+                            Las artes plásticas son una forma de expresión que abarca diversas disciplinas, como la pintura, 
+                            la escultura, el dibujo y la fotografía. A través de estas técnicas, los artistas plasman emociones, 
+                            ideas y visiones del mundo que nos rodea.
+                        </p>
+                    </section>
+
+                    <!-- Sección de Historia -->
+                    <section id="historia" class="artes-section">
+                        <h2> Artes Plásticas</h2>
+                        <p>
+                            Las artes plásticas tienen una larga historia que se remonta a las primeras manifestaciones artísticas 
+                            de la humanidad, como las pinturas rupestres. A lo largo de los siglos, han evolucionado y se han 
+                            adaptado a los cambios culturales, sociales y tecnológicos, dando lugar a movimientos artísticos 
+                            como el Renacimiento, el Impresionismo y el Arte Contemporáneo.
+                        </p>
+                    </section>
+
+                    <!-- Sección de Técnicas -->
+                    <section id="tecnicas" class="artes-section">
+                        <h2>Técnicas en las Artes Plásticas</h2>
+                        <p>
+                            Las artes plásticas utilizan una amplia variedad de técnicas y materiales. Algunas de las más comunes son:
+                        </p>
+                        <ul>
+                            <li><strong>Pintura:</strong> Óleo, acrílico, acuarela, témpera.</li>
+                            <li><strong>Escultura:</strong> Tallado, modelado, fundición.</li>
+                            <li><strong>Dibujo:</strong> Lápiz, carboncillo, tinta.</li>
+                            <li><strong>Fotografía:</strong> Digital, analógica, fotomontaje.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Sección de Galería -->
+                    <section id="galeria" class="artes-section">
+                        <h2>Galería</h2>
+                        <div class="artes-gallery">
+                            <img src="ma.jpeg" alt="Pintura 1">
+                            <img src="mo.jpeg" alt="Escultura 1">
+                            <img src="mu.jpeg" alt="Dibujo 1">
+                            <img src="escu.jpeg" alt="Fotografía 1">
+                            <img src="pi.jpeg" alt="Pintura 2">
+                            <img src="esp.jpeg" alt="Escultura 2">
+                            <img src="va.jpeg" alt="Escultura 8">
+                            <img src="ve.jpeg" alt="Escultura 9">
+                        </div>
+                    </section>
+                </main>
+
+                <!-- Sección de Contacto -->
+                <div class="artes-contacto" id="contacto">
+                    <h2>Contacto</h2>
+                    <p>
+                        ¿Te interesa aprender más sobre las artes plásticas? ¡Contáctanos! Estamos aquí para responder tus preguntas 
+                        y compartir nuestra pasión por el arte.
+                    </p>
+                    <p>
+                        Correo electrónico: <a href="mailto:info@artesplasticas.com">info@artesplasticas.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Contenido para Banda de Guerra -->
+            <div id="bandag" class="dynamic-content">
+                <!-- Encabezado con imagen de fondo -->
+                <header class="banda-header">
+                    <h1>Banda de Guerra</h1>
+                    <p>Tradición, Disciplina y Espíritu de Equipo</p>
+                </header>
+
+                <!-- Contenido principal -->
+                <main class="banda-container">
+                    <!-- Sección de Inicio -->
+                    <section id="inicio" class="banda-section">
+                        <h2>Bienvenidos</h2>
+                        <p>
+                            La Banda de Guerra es una tradición que combina disciplina, coordinación y espíritu de equipo. 
+                            A través de los tambores, cornetas y movimientos precisos, representamos el honor y la dedicación 
+                            de nuestras instituciones.
+                        </p>
+                    </section>
+
+                    <!-- Sección de Historia -->
+                    <section id="historia" class="banda-section">
+                        <h2>Banda de Guerra</h2>
+                        <p>
+                            Las bandas de guerra tienen sus orígenes en las formaciones militares, donde se utilizaban para 
+                            transmitir órdenes y mantener el ritmo durante las marchas. Con el tiempo, esta tradición se ha 
+                            convertido en un símbolo de identidad y orgullo en instituciones educativas y militares.
+                        </p>
+                    </section>
+
+                    <!-- Sección de Galería -->
+                    <section id="galeria" class="banda-section">
+                        <h2>Galería</h2>
+                        <div class="banda-gallery">
+                            <img src="js.jpeg" alt="Banda de Guerra 1">
+                            <img src="ji.jpeg" alt="Banda de Guerra 2">
+                            <img src="jo.jpeg" alt="Banda de Guerra 3">
+                            <img src="je.jpeg" alt="Banda de Guerra 4">
+                            <img src="ju.jpeg" alt="Banda de Guerra 5">
+                            <img src="ja.jpeg" alt="Banda de Guerra 6">
+                        </div>
+                    </section>
+                </main>
+
+                <!-- Sección de Contacto -->
+                <div class="banda-contacto" id="contacto">
+                    <h2>Contacto</h2>
+                    <p>
+                        ¿Te interesa saber más sobre la Banda de Guerra? ¡Contáctanos! Estamos aquí para responder tus preguntas 
+                        y compartir nuestra pasión por esta tradición.
+                    </p>
+                    <p>
+                        Correo electrónico: <a href="mailto:info@bandadeguerra.com">info@bandadeguerra.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Contenido para otras secciones -->
+            <div class="banda-header">
+        <h1>Banda Musical</h1>
+        <p>Donde la música se convierte en alma</p>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="banda-container">
+        <!-- Sección de Historia -->
+        <section id="historia">
+            <h2>Nuestra Historia</h2>
+            <p>La Banda Musical nació de la pasión por crear melodías que toquen el corazón. Desde nuestros humildes comienzos en pequeños escenarios hasta conquistar grandes festivales, cada nota ha sido un paso en nuestro viaje. Combinamos ritmos modernos con influencias clásicas para crear un sonido único que resuena en cada persona que nos escucha.</p>
+            <p>Nuestra misión es simple: llevar alegría, inspiración y emoción a través de la música. Cada concierto es una experiencia inolvidable, llena de energía y conexión con el público.</p>
+        </section>
+
+        <!-- Sección de Alma Creativa -->
+        <section id="alma-creativa">
+            <h2>Alma Creativa</h2>
+            <p>Detrás de cada acorde hay un artista apasionado. Conoce a las mentes y corazones que dan vida a nuestra música:</p>
+            <ul>
+                <li><strong>Luna Martínez:</strong> Voz principal y compositora.</li>
+                <li><strong>Diego Ríos:</strong> Guitarra líder y arreglos.</li>
+                <li><strong>Sofía Navarro:</strong> Batería y percusión.</li>
+                <li><strong>Carlos Vega:</strong> Bajo y sintetizadores.</li>
+                <li><strong>Ana Torres:</strong> Teclados y coros.</li>
+            </ul>
+        </section>
+
+        <!-- Sección de Momentos Mágicos -->
+        <section id="momentos-magicos">
+            <h2>Momentos Mágicos</h2>
+            <p>Próximas fechas para vivir la magia de nuestra música:</p>
+            <ul>
+                <li><strong>Noche bajo las estrellas:</strong> 20 de octubre, 8:00 PM - Parque Central.</li>
+                <li><strong>Festival de Luces y Sonidos:</strong> 28 de octubre, 7:00 PM - Teatro Municipal.</li>
+                <li><strong>Concierto íntimo:</strong> 5 de noviembre, 6:00 PM - Café Cultural.</li>
+            </ul>
+        </section>
+
+        <!-- Sección de Galería -->
+        <section id="galeria">
+            <h2>Galería</h2>
+            <div class="gallery">
+                <img src="xa.jpeg" alt="Banda en concierto">
+                <img src="xi.jpeg" alt="Integrantes de la banda">
+                <img src="xo.jpeg" alt="Banda en el estudio">
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto">
+            <h2>Conéctate</h2>
+            <p>¿Quieres que formemos parte de tu evento o simplemente quieres saber más? ¡Escríbenos!</p>
+            <p>Email: <a href="mailto:info@bandamusical.com">info@bandamusical.com</a></p>
+            <p>Teléfono: +123 456 7890</p>
+        </section>
+    </div>
+     <!-- Contenido para otras secciones -->
+      
+</div>
+</div>
+</div>
+
+    <div class="footer">
+        <p>&copy; 2023 COBAEP. Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        // Crear partículas al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.particles');
+            const particleCount = 10;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posición aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-10px`;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 2 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Opacidad aleatoria
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                // Duración y delay aleatorio
+                const duration = Math.random() * 4 + 3;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                
+                container.appendChild(particle);
+            }
+
+            // Script para cargar imagen en el banner vertical
+            document.getElementById('file-input').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const bannerImage = document.getElementById('banner-image');
+                        const placeholder = document.querySelector('.image-placeholder');
+                        
+                        bannerImage.src = event.target.result;
+                        bannerImage.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        
+                        // Mostrar mensaje de éxito
+                        alert('¡Imagen cargada correctamente!');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Manejar clics en los enlaces del menú
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const contentId = this.getAttribute('data-content');
+                    
+                    // Ocultar todos los contenidos
+                    document.querySelectorAll('.dynamic-content').forEach(content => {
+                        content.classList.remove('content-active');
+                    });
+                    
+                    // Mostrar el contenido seleccionado
+                    document.getElementById(contentId).classList.add('content-active');
+                });
+            });
+            
+            // Animación de aparición al hacer scroll para las secciones
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>  
